@@ -52,8 +52,8 @@ func TestValidateGenesisMultipleMessages(t *testing.T) {
 	tx := txBuilder.GetTx()
 	genesisState := types.NewGenesisStateFromTx(txGen.TxJSONEncoder(), []sdk.Tx{tx})
 
-	err = types.ValidateGenesis(genesisState, simapp.MakeTestEncodingConfig().TxConfig.TxJSONDecoder())
-	require.Error(t, err)
+	err = types.ValidateGenesis(genesisState, txGen.TxJSONDecoder())
+	require.NoError(t, err)
 }
 
 func TestValidateGenesisBadMessage(t *testing.T) {
