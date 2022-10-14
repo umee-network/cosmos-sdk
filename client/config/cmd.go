@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"path/filepath"
-
-	tmcli "github.com/tendermint/tendermint/libs/cli"
+	"strconv"
 
 	"github.com/spf13/cobra"
+	tmcli "github.com/tendermint/tendermint/libs/cli"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -58,6 +58,8 @@ func runConfigCmd(cmd *cobra.Command, args []string) error {
 			cmd.Println(conf.Node)
 		case flags.FlagBroadcastMode:
 			cmd.Println(conf.BroadcastMode)
+		case flags.FlagGRPCConcurrency:
+			cmd.Println(conf.GRPCConcurrency)
 		default:
 			err := errUnknownConfigKey(key)
 			return fmt.Errorf("couldn't get the value for the key: %v, error:  %v", key, err)
@@ -78,6 +80,9 @@ func runConfigCmd(cmd *cobra.Command, args []string) error {
 			conf.SetNode(value)
 		case flags.FlagBroadcastMode:
 			conf.SetBroadcastMode(value)
+		case flags.FlagGRPCConcurrency:
+			valuebool, _ := strconv.ParseBool(value)
+			conf.SetGRPCConcurrency(valuebool)
 		default:
 			return errUnknownConfigKey(key)
 		}

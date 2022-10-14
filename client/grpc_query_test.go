@@ -79,6 +79,22 @@ func (s *IntegrationTestSuite) TestGRPCQuery() {
 	s.Require().Equal([]string{"1"}, blockHeight)
 }
 
+func (s *IntegrationTestSuite) TestGRPCConcurrency() {
+	val0 := s.network.Validators[0]
+	clientCtx := val0.ClientCtx
+	clientCtx.GRPCConcurrency = true
+	in := &testdata.EchoRequest{Message: "hello"}
+	out := &testdata.EchoResponse{}
+	err := clientCtx.Invoke(context.Background(), "/testdata.Query/Echo", in, out)
+	s.Require().NoError(err)
+	s.Require().Equal("hello", out.Message)
+
+	clientCtx.GRPCConcurrency = false
+	err = clientCtx.Invoke(context.Background(), "/testdata.Query/Echo", in, out)
+	s.Require().NoError(err)
+	s.Require().Equal("hello", out.Message)
+}
+
 func TestIntegrationTestSuite(t *testing.T) {
 	suite.Run(t, new(IntegrationTestSuite))
 }

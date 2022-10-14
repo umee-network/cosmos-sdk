@@ -57,7 +57,8 @@ func (ctx Context) Invoke(grpcCtx gocontext.Context, method string, req, reply i
 		return err
 	}
 
-	if ctx.GRPCClient != nil {
+	// TODO: it seams we don't need ctx.GRPCConcurrency any more
+	if ctx.GRPCClient != nil && ctx.GRPCConcurrency {
 		// Case 2-1. Invoke grpc.
 		return ctx.GRPCClient.Invoke(grpcCtx, method, req, reply, opts...)
 	}
