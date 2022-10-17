@@ -37,6 +37,10 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 ## [Unreleased]
 
+### Features
+
+* (grpc) [#13485](https://github.com/cosmos/cosmos-sdk/pull/13485) Implement a new gRPC query, `/cosmos/base/node/v1beta1/config`, which provides operator configuration.
+
 ### Improvements
 
 * (auth) [#13460](https://github.com/cosmos/cosmos-sdk/pull/13460) The `q auth address-by-id` CLI command has been renamed to `q auth address-by-acc-num` to be more explicit. However, the old `address-by-id` version is still kept as an alias, for backwards compatibility.
@@ -44,6 +48,10 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ### Bug Fixes
 
 * (store) [#13459](https://github.com/cosmos/cosmos-sdk/pull/13459) Don't let state listener observe the uncommitted writes.
+
+### API Breaking Changes
+
+* (server) [#13485](https://github.com/cosmos/cosmos-sdk/pull/13485) The `Application` service now requires the `RegisterNodeService` method to be implemented.
 
 ## [v0.46.2](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.46.2) - 2022-10-03
 
@@ -54,6 +62,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 ### Features
 
+* (baseapp) [#12168](https://github.com/cosmos/cosmos-sdk/pull/12168) Add `SetMsgServiceRouter` to `BaseApp`.
 * (cli) [#13207](https://github.com/cosmos/cosmos-sdk/pull/13207) Reduce user's password prompts when calling keyring `List()` function.
 * (cli) [#13353](https://github.com/cosmos/cosmos-sdk/pull/13353) Add `tx group draft-proposal` command for generating group proposal JSONs (skeleton).
 * (cli) [#13304](https://github.com/cosmos/cosmos-sdk/pull/13304) Add `tx gov draft-proposal` command for generating proposal JSONs (skeleton).
