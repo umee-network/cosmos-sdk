@@ -80,6 +80,9 @@ const (
 	flagGRPCAddress    = "grpc.address"
 	flagGRPCWebEnable  = "grpc-web.enable"
 	flagGRPCWebAddress = "grpc-web.address"
+
+	// logger flags
+	FlagColorLogs = "color-logs"
 )
 
 // StartCmd runs the service passed in, either stand-alone or in-process with
@@ -194,6 +197,8 @@ is performed. Note, when enabled, gRPC will also be automatically enabled.
 	cmd.Flags().Uint32(FlagStateSyncSnapshotKeepRecent, 2, "State sync snapshot to keep")
 
 	cmd.Flags().Bool(FlagDisableIAVLFastNode, false, "Disable fast node for IAVL tree")
+
+	cmd.Flags().Bool(FlagColorLogs, false, "color logs in logger")
 
 	// add support for all Tendermint-specific command line options
 	tcmd.AddNodeFlags(cmd)
