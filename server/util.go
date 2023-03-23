@@ -149,9 +149,10 @@ func InterceptConfigsPreRunHandler(cmd *cobra.Command, customAppConfigTemplate s
 		return err
 	}
 
+	colorLogs := serverCtx.Viper.GetBool(FlagColorLogs)
 	var logWriter io.Writer
 	if strings.ToLower(serverCtx.Viper.GetString(flags.FlagLogFormat)) == tmcfg.LogFormatPlain {
-		logWriter = zerolog.ConsoleWriter{Out: os.Stderr, NoColor: true}
+		logWriter = zerolog.ConsoleWriter{Out: os.Stderr, NoColor: !colorLogs}
 	} else {
 		logWriter = os.Stderr
 	}

@@ -36,6 +36,8 @@ Ref: https://keepachangelog.com/en/1.0.0/
 # Changelog
 
 ## [Unreleased]
+### Improvements
+* (logs) [#1](https://github.com/umee-network/cosmos-sdk/pull/1) added `--color-logs` flags to disable the color logs to logger on start cmd.
 
 ## [v0.46.11](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.46.11) - 2022-03-03
 
