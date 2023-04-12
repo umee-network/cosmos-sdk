@@ -39,6 +39,23 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ### Improvements
 * (logs) [#1](https://github.com/umee-network/cosmos-sdk/pull/1) added `--color-logs` flags to disable the color logs to logger on start cmd.
 
+## [v0.46.12](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.46.12) - 2022-04-04
+
+### Features
+
+* (x/groups) [#14879](https://github.com/cosmos/cosmos-sdk/pull/14879) Add `Query/Groups` query to get all the groups.
+
+### Improvements
+
+* (simapp) [#15305](https://github.com/cosmos/cosmos-sdk/pull/15305) Add `AppStateFnWithExtendedCb` with callback function to extend rawState and `AppStateRandomizedFnWithState` with extra genesisState argument which is the genesis state of the app.
+* (x/distribution) [#15462](https://github.com/cosmos/cosmos-sdk/pull/15462) Add delegator address to the event for withdrawing delegation rewards
+* [#14019](https://github.com/cosmos/cosmos-sdk/issues/14019) Remove the interface casting to allow other implementations of a `CommitMultiStore`.
+
+### Bug Fixes
+
+* (x/auth/vesting) [#15383](https://github.com/cosmos/cosmos-sdk/pull/15383) Add extra checks when creating a periodic vesting account.
+* (x/gov) [#13051](https://github.com/cosmos/cosmos-sdk/pull/13051) In SubmitPropsal, when a legacy msg fails it's handler call, wrap the error as ErrInvalidProposalContent (instead of ErrNoProposalHandlerExists).
+
 ## [v0.46.11](https://github.com/cosmos/cosmos-sdk/releases/tag/v0.46.11) - 2022-03-03
 
 ### Improvements
