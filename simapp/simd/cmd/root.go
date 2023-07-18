@@ -174,7 +174,7 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 		NewTestnetCmd(simapp.ModuleBasics, banktypes.GenesisBalancesIterator{}),
 		debug.Cmd(),
 		config.Cmd(),
-		pruning.PruningCmd(a.newApp),
+		pruning.Cmd(a.newApp, simapp.DefaultNodeHome),
 		snapshot.Cmd(a.newApp),
 	)
 
